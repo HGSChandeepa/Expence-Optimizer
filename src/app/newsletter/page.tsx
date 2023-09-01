@@ -1,10 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import SquigglyLines from "../components/SquigglyLines";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import ModelPopup from "@/components/ModelPopup";
+import SquigglyLines from "@/components/SquigglyLines";
+import { Link } from "lucide-react";
+import React from "react";
 
-export default function HomePage() {
+export default function page() {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Header />
@@ -43,7 +44,6 @@ export default function HomePage() {
     </div>
   );
 }
-
 function FireLogo({ className }: { className?: string }) {
   return (
     <svg
