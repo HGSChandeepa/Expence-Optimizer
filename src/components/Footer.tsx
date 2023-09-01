@@ -4,10 +4,10 @@ export default function Footer() {
   return (
     <footer className="text-center h-16 sm:h-20 w-full sm:pt-2 pt-4 border-t mt-5 flex sm:flex-row flex-col justify-between items-center px-3 space-y-3 sm:mb-0 mb-3 border-gray-500">
       <div className="text-blue-500 font-extrabold">
-        Expence.AI
+        <Link href={"/"}> Expence.AI</Link>
+
         <a
-          href="https://replicate.com/"
-          target="_blank"
+          href="/newsletter "
           rel="noreferrer"
           className="font-normal hover:underline text-gray-400 transition hover:text-gray-300 underline-offset-2"
         >
