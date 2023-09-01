@@ -15,9 +15,8 @@ export default function Footer() {
         </a>
       </div>
       <div className="flex w-3/5 text-center md:text-left text-gray-500 space-x-4 pb-4 sm:pb-0">
-        Expense Analyzer: Effortlessly track, analyze, and optimize expenses.
-        Achieve financial goals with AI-powered insights. Start your journey to
-        financial success today!
+        Expense Analyzer: Effortlessly track, analyze, and optimize your
+        expenses using AI.
       </div>
     </footer>
   );

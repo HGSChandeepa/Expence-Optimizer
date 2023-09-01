@@ -1,29 +1,24 @@
+"use client";
+
+"use client";
+
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import ModelPopup from "@/components/ModelPopup";
 import SquigglyLines from "@/components/SquigglyLines";
-import { Link } from "lucide-react";
-import React from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import React, { useState } from "react"; // Import useState from React
 
-export default function page() {
+export default function Page() {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
-      <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20 background-gradient">
-        <a
-          href="https://vercel.fyi/roomGPT"
-          target="_blank"
-          rel="noreferrer"
-          className="border border-gray-700 rounded-lg py-2 px-4 text-gray-400 text-sm mb-5 transition duration-300 ease-in-out"
-        >
-          You can Join Our Newsletter For more Updates
-          <span className="text-blue-600"> visit here!</span>
-        </a>
-        <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-gray-300 sm:text-7xl">
-          Take Controll Of Your Finantial Future Using Our{" "}
+        <h1 className="mx-auto max-w-4xl font-display  font-bold tracking-normal text-gray-300 text-3xl md:text-4xl">
+          Our Team Is Working Very Hard On this Product And We Will Be Up And
+          Running Soon!{" "}
           <span className="relative whitespace-nowrap text-blue-600">
             <SquigglyLines />
-            <span className="relative">AI-Powered Tools</span>
+            <span className="relative">Join Our Newsletter</span>
           </span>
         </h1>
         <h2 className="mx-auto mt-12 max-w-xl text-lg sm:text-gray-400  text-gray-500 leading-7">
@@ -31,19 +26,23 @@ export default function page() {
           Achieve financial goals with AI-powered insights. Start your journey
           to financial success today!
         </h2>
-        <Link
-          className="flex items-center justify-center gap-2 bg-blue-600 rounded-full text-white font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-blue-500 transition"
-          href="/newsletter"
-        >
+        <div className=" w-3/5 mt-3 flex items-center justify-center">
+          <Input
+            className="w-full md:w-80 rounded-full  py-2 px-4 border text-gray-800 border-gray-200 bg-black/60"
+            placeholder="enter your email"
+          />
+        </div>
+        <Button className="flex items-center justify-center gap-2 bg-blue-600 rounded-full text-white font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-blue-500 transition">
           <FireLogo />
-          Get Started Now
-        </Link>
+          Join The Newsletter
+        </Button>
         <div className="flex justify-between items-center w-full flex-col sm:mt-10 mt-6"></div>
       </main>
       <Footer />
     </div>
   );
 }
+
 function FireLogo({ className }: { className?: string }) {
   return (
     <svg
