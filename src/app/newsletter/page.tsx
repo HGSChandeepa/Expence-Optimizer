@@ -1,15 +1,51 @@
 "use client";
 
-"use client";
-
 import Footer from "@/components/Footer";
-import ModelPopup from "@/components/ModelPopup";
 import SquigglyLines from "@/components/SquigglyLines";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import React, { useState } from "react"; // Import useState from React
+import { newsletterSchema } from "./constants";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { firestoredb } from "@/lib/firebase.config";
+import { doc } from "@firebase/firestore";
+import { set } from "firebase/database";
+
+type NewsletterSchema = {
+  email: string;
+};
 
 export default function Page() {
+  const [email, setEmail] = useState("");
+  const [notified, setNotified] = useState(false);
+
+  //here the email is stored in the firebase firestore database
+  const handleEmailSubmit = async (data: NewsletterSchema) => {
+    try {
+      const docRef = firestoredb.collection("newsletterEmails").doc(email);
+      docRef.set({
+        email: email,
+      });
+
+      setEmail("");
+      setNotified(true);
+
+      console.log("stored");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //react hook form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<NewsletterSchema>({
+    resolver: zodResolver(newsletterSchema),
+  });
+
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20 background-gradient">
@@ -26,16 +62,47 @@ export default function Page() {
           Achieve financial goals with AI-powered insights. Start your journey
           to financial success today!
         </h2>
-        <div className=" w-3/5 mt-3 flex items-center justify-center">
-          <Input
-            className="w-full md:w-80 rounded-full text-white py-2 px-4  bg-transparent/40"
-            placeholder="enter your email"
-          />
-        </div>
-        <Button className="flex items-center justify-center gap-2 bg-blue-600 rounded-full text-white font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-blue-500 transition">
-          <FireLogo />
-          Join The Newsletter
-        </Button>
+
+        {
+          //if the user has not been notified yet
+          !notified ? (
+            <form
+              className=" w-full flex flex-col justify-center items-center mt-10"
+              onSubmit={handleSubmit(handleEmailSubmit)}
+            >
+              <div className=" w-3/5 mt-3 flex  flex-col gap-2 items-center justify-center">
+                <Input
+                  {...register("email")}
+                  type="email"
+                  className="w-full md:w-80 rounded-full text-white py-2 px-4  bg-transparent/40"
+                  placeholder="enter your email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                {errors.email && (
+                  <span className="text-red-500 text-xs font-semibold">
+                    {errors.email.message}
+                  </span>
+                )}
+              </div>
+              <Button
+                type="submit"
+                className="flex items-center justify-center gap-2 bg-blue-600 rounded-full text-white font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-blue-500 transition"
+              >
+                <FireLogo />
+                Join The Newsletter
+              </Button>
+            </form>
+          ) : (
+            <div className="flex flex-col justify-center items-center mt-10">
+              <h1 className="text-xl font-semibold text-blue-500">
+                🚀Thank you for joining our newsletter!
+              </h1>
+              <h2 className="text-gray-400 text-sm mt-4">
+                We will notify you when we are up and running!
+              </h2>
+            </div>
+          )
+        }
         <div className="flex justify-between items-center w-full flex-col sm:mt-10 mt-6"></div>
       </main>
       <Footer />
