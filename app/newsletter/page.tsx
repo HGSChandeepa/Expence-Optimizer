@@ -68,11 +68,11 @@ export default function Page() {
               className=" w-full flex flex-col justify-center items-center mt-10"
               onSubmit={handleSubmit(handleEmailSubmit)}
             >
-              <div className=" w-3/5 mt-3 flex  flex-col gap-2 items-center justify-center">
+              <div className=" mt-3 flex  flex-col gap-2 items-center justify-center">
                 <Input
                   {...register("email")}
                   type="email"
-                  className="w-full md:w-80 rounded-full text-white py-2 px-4  bg-transparent/40"
+                  className="w-64 rounded-full text-white py-6 px-4  bg-transparent/40"
                   placeholder="enter your email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
