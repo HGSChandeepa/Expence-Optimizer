@@ -1,6 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
-import "../../styles/globals.css";
+import "../styles/globals.css";
 
 let title = "Expence Annalyzer";
 let description = "Annalyze your expences with the power of AI";

@@ -1,16 +1,14 @@
 "use client";
 
-import Footer from "@/components/Footer";
-import SquigglyLines from "@/components/SquigglyLines";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import Footer from "../../components/Footer";
+import SquigglyLines from "../../components/SquigglyLines";
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input";
 import React, { useState } from "react"; // Import useState from React
 import { newsletterSchema } from "./constants";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { firestoredb } from "@/lib/firebase.config";
-import { doc } from "@firebase/firestore";
-import { set } from "firebase/database";
+import { firestoredb } from "../../lib/firebase.config";
 
 type NewsletterSchema = {
   email: string;
