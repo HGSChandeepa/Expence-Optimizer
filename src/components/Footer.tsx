@@ -14,7 +14,7 @@ export default function Footer() {
           <span className=" px-2">|</span>Get Sign In to our Newsletter
         </a>
       </div>
-      <div className="flex w-3/5 text-center md:text-left text-gray-500 space-x-4 pb-4 sm:pb-0">
+      <div className="flex w-3/5 text-center text-sm md:text-base md:text-left text-gray-500 space-x-4 pb-4 sm:pb-0">
         Expense Analyzer: Effortlessly track, analyze, and optimize your
         expenses using AI.
       </div>

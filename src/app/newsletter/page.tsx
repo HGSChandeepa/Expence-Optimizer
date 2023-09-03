@@ -28,7 +28,7 @@ export default function Page() {
         </h2>
         <div className=" w-3/5 mt-3 flex items-center justify-center">
           <Input
-            className="w-full md:w-80 rounded-full text-white py-2 px-4 border  border-gray-200 bg-black/60"
+            className="w-full md:w-80 rounded-full text-white py-2 px-4  bg-transparent/40"
             placeholder="enter your email"
           />
         </div>
